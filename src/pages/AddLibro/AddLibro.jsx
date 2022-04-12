@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Text, View, TextInput } from "react-native";
 import {styles} from "./AddLibro.styles";
-
+import i18n from "../../../localization/i18n"
 import { list, create, onCreate } from "../../services/todos";
 import ButtonComponent from "../../components/Button";
 
@@ -36,16 +36,16 @@ useEffect(() =>{
 
 return (
       <View style={styles.container}>
-        <Text>Agregar Libro</Text>
+        <Text>{i18n.t("Agregar Libro")}</Text>
 
-        <Text>Nombre</Text>
+        <Text>{i18n.t("Nombre")}</Text>
         <TextInput
          onChangeText={(text)=>
           setTodo((current) =>({...current, nombre: text}))
       }
        style={{width:100, height:50, backgroundColor:"#e8eaed"}} 
        />
-       <Text>Descripcion</Text>
+       <Text>{i18n.t("Descripcion")}</Text>
         <TextInput 
         onChangeText={(text)=>
           setTodo((current) =>({...current, descripcion: text}))
@@ -58,7 +58,7 @@ return (
            marginVertical:10,
           }} 
            />
-            <Text>Estatus</Text>
+            <Text>{i18n.t("Estatus")}</Text>
         <TextInput
          onChangeText={(text)=>
           setTodo((current) =>({...current, estatus: text}))
@@ -66,21 +66,21 @@ return (
        style={{width:100, height:50, backgroundColor:"#e8eaed"}} 
        />
 
-<Text>ISBN</Text>
+<Text>{i18n.t("ISBN")}</Text>
         <TextInput
          onChangeText={(text)=>
           setTodo((current) =>({...current, iSBN: text}))
       }
        style={{width:100, height:50, backgroundColor:"#e8eaed"}} 
        />
-       <Text>Categoria</Text>
+       <Text>{i18n.t("Categoria")}</Text>
         <TextInput
          onChangeText={(text)=>
           setTodo((current) =>({...current, categoria: text}))
       }
        style={{width:100, height:50, backgroundColor:"#e8eaed"}} 
        />
-       <Text>Fecha de publicación</Text>
+       <Text>{i18n.t("Fecha de publicación")}</Text>
         <TextInput
          onChangeText={(text)=>
           setTodo((current) =>({...current, fechapublicacion: text}))
@@ -88,7 +88,7 @@ return (
        style={{width:100, height:50, backgroundColor:"#e8eaed"}} 
        />
        
-        <ButtonComponent title="Create todo" onPress={addData} />
+        <ButtonComponent title={i18n.t("Create todo")} onPress={addData} />
 
       </View>
     );
