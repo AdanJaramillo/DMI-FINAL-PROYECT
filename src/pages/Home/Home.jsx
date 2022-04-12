@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, Linking } from 'react-native';
 import {styles} from "./Home.styles";
 import ButtonComponent from "../../components/Button";
-
+import i18n from "../../../localization/i18n"
 import {Amplify} from "aws-amplify"
 
 export default function HomeScreen(){
@@ -26,8 +26,8 @@ export default function HomeScreen(){
         </Text>
 
       
-        <Text>Home Screen</Text>
-        <ButtonComponent title="Logout" onPress={signOut} />
+        <Text>{i18n.t("Home Screen")}</Text>
+        <ButtonComponent title={i18n.t("Logout")} onPress={signOut} />
       </View>
     )
   }
