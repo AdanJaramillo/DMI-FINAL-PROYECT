@@ -21,7 +21,7 @@ export default function HomeScreen(){
     return (
       <View style={styles.container}>
       <Text style={{color: 'blue'}}
-        onPress={() => Linking.openURL("https://github.com/AdanJaramillo/DMI-Actividad-I---Cat-logo-de-libros-AWS")}>
+        onPress={() => Linking.openURL("https://github.com/AdanJaramillo/DMI-FINAL-PROYECT")}>
           GitHub
         </Text>
 
