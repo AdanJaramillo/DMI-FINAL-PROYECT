@@ -35,4 +35,12 @@ const onCreate = async(subscriptionFunction) => {
     return subscription;
 };
 
+// const onDelete = async()=>{
+//     const subscription = API.graphql(graphqlOperation(updateTodo)).subscribe({
+//         next: (todoData)=>{
+
+//         }
+//     })
+// }
+
 export {list, create, onCreate};
