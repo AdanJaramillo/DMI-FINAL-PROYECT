@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Text, View, TextInput } from "react-native";
+import { Text, View, TextInput, SafeAreaView, ScrollView } from "react-native";
 import {styles} from "./AddLibro.styles";
 import i18n from "../../../localization/i18n"
 import { list, create, onCreate } from "../../services/todos";
@@ -35,6 +35,8 @@ useEffect(() =>{
 }, []);
 
 return (
+  <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <Text>{i18n.t("Agregar Libro")}</Text>
 
@@ -91,5 +93,7 @@ return (
         <ButtonComponent title={i18n.t("Create todo")} onPress={addData} />
 
       </View>
+      </ScrollView>
+      </SafeAreaView>
     );
   }

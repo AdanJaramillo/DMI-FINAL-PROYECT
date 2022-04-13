@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
-import { Text, View } from "react-native";
+import { Text, View, SafeAreaView, ScrollView } from "react-native";
 import {styles} from "./Lista.styles";
-
 import { list, create, onCreate } from "../../services/todos";
+import { Card, ListItem, Button } from 'react-native-elements'
+import i18n from "../../../localization/i18n"
 
 
 
@@ -35,16 +36,22 @@ useEffect(() =>{
 }, []);
 
 return (
+
+  <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
   
-      <View style={styles.container}>
+      <Card>
+  <Card.Title>{i18n.t("Libros")}</Card.Title>
+  <Card.Divider/>
         
-
-
-        {todos && 
+   {todos && 
           todos.map((todo)=> (
-          <Text key={todo.id}> {`${todo.nombre} ${todo.descripcion} ${todo.estatus} ${todo.iSBN} ${todo.categoria} ${todo.fechapublicacion}`}</Text>
+            
+          <Text key={todo.id}>  {`${todo.nombre} ${todo.descripcion} ${todo.estatus} ${todo.iSBN} ${todo.categoria} ${todo.fechapublicacion}`}</Text>
           ))}
 
-      </View>
+</Card>
+      </ScrollView>
+      </SafeAreaView>
     );
   }
