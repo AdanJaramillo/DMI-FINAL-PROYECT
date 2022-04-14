@@ -4,6 +4,7 @@ import {styles} from "./Home.styles";
 import ButtonComponent from "../../components/Button";
 import i18n from "../../../localization/i18n"
 import {Amplify} from "aws-amplify"
+import {Auth} from "aws-amplify";
 
 export default function HomeScreen(){
 
@@ -18,6 +19,12 @@ export default function HomeScreen(){
 
   }
 
+  async function getUserInfo(){
+    Auth.currentSession()
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  }
+
     return (
       <View style={styles.container}>
       <Text style={{color: 'blue'}}
@@ -28,6 +35,7 @@ export default function HomeScreen(){
       
         <Text>{i18n.t("Home Screen")}</Text>
         <ButtonComponent title={i18n.t("Logout")} onPress={signOut} />
+        
       </View>
     )
   }
