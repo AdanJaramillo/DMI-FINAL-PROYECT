@@ -1,4 +1,3 @@
-import React from "react";
 import { Text, View, Linking, Platform } from 'react-native';
 import {styles} from "./Home.styles";
 import ButtonComponent from "../../components/Button";
@@ -6,7 +5,7 @@ import i18n from "../../../localization/i18n"
 import {Amplify} from "aws-amplify"
 import {Auth} from "aws-amplify";
 import * as ImagePicker from 'expo-image-picker';
-import Constants from 'expo-constants';
+import React, { useState, useEffect } from 'react';
 
 export default function HomeScreen(){
 
@@ -75,20 +74,21 @@ export default function HomeScreen(){
 //---------------------------------------------------------
     return (
       <View style={styles.container}>
+      <Text>{i18n.t("Home Screen")}</Text>
       <Text style={{color: 'blue'}}
         onPress={() => Linking.openURL("https://github.com/AdanJaramillo/DMI-FINAL-PROYECT")}>
           GitHub
         </Text>
 {/* Eduardo Camara */}
-      <ButtonComponent title="Pick an image from camera roll" onPress={pickImage}/>
-      <ButtonComponent onPress={openCamera} title="Open Camera"/>
+      <ButtonComponent title={i18n.t("Galeria")} onPress={pickImage}/>
+      <ButtonComponent onPress={openCamera} title={i18n.t("Open Camera")}/>
       {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 {/* Eduardo Camara */}
       
 
-        <Text>{i18n.t("Home Screen")}</Text>
-        <ButtonComponent title={i18n.t("Logout")} onPress={signOut} />
         
+        <ButtonComponent title={i18n.t("Logout")} onPress={signOut} />
+        <ButtonComponent title={i18n.t("Usuario")} onPress={getUserInfo}/>
       </View>
     )
   }
