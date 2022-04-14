@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "180394",
-    "slug": "180394",
+    "name": "DMI Proyecto U2_180394_180253",
+    "slug": "dmi-proyecto-u2_180394_180253",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/image_preview.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/image_preview.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,12 +21,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/image_preview.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/image_preview.png"
+    },
+    "description": "",
+    "githubUrl": "https://github.com/AdanJaramillo/DMI-FINAL-PROYECT"
   }
 }
