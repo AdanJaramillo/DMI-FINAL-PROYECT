@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import { Text, View, Linking, Image } from 'react-native';
 import {styles} from "./Home.styles";
 import ButtonComponent from "../../components/Button";
@@ -18,35 +18,27 @@ export default function HomeScreen(){
 
   }
 //Abrir el menu de seleccionar foto o tomar foto
-  async function openImagePicker(){
-    const options = {
-        title: 'Select Avatar',
-        StorageOptions: {
-            skipBackup:true,
-            path: 'images'
-        }
-    }
-    ImagePicker.showImagePicker(options,(response=>{
-        if(response.didCancel){
-            console.log('User canceled image picker');
-        }else if(response.error){
-            console.log('Error' + response.error);
-        }else if(response.customBotton){
-            console.log('User tapped customButton' + response.customBotton);
-        }else{
-            this.setState({
-                imaPath: response.uri,
-                imageHeight: response.height,
-                imageWidth: response.width
-            })
-        }
-    })
-    )
-  //----------------------------------
-}
+const [image, setImage] = useState(null);
 
+const pickImage = async () => {
+  // No permissions request is necessary for launching the image library
+  let result = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.All,
+    allowsEditing: true,
+    aspect: [4, 3],
+    quality: 1,
+  });
+
+  console.log(result);
+
+  if (!result.cancelled) {
+    setImage(result.uri);
+  }
+};
+  //----------------------------------
     return (
-      <View style={styles.container}>
+      <View
+       style={styles.container}>
         {this.state.imaPath ? <Image source={{uri: this.state.imaPath}}/> : null}
       <Text style={{color: 'blue'}}
         onPress={() => Linking.openURL("https://github.com/AdanJaramillo/DMI-Actividad-I---Cat-logo-de-libros-AWS")}>
@@ -55,7 +47,8 @@ export default function HomeScreen(){
         <Text>Home Screen</Text>
         <ButtonComponent title="Logout" onPress={signOut} />
         {/* Mandamos a llamar la funcion para abrir imagenes */}
-        <ButtonComponent title="camera" onPress={openImagePicker}></ButtonComponent>
+        <ButtonComponent title="Subir foto." onPress={pickImage} />
+        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
       </View>
     )
   }
